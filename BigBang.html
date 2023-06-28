@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Big Bang</title>
+  <script>
+    function generateOutput() {
+      var outputArray = [];
+
+      for (var i = 1; i <= 100; i++) {
+        if (i % 3 === 0 && i % 5 === 0) {
+          outputArray.push("BIGBANG");
+        } else if (i % 3 === 0) {
+          outputArray.push("BIG");
+        } else if (i % 5 === 0) {
+          outputArray.push("BANG");
+        } else {
+          outputArray.push(String(i));
+        }
+      }
+
+      var outputJSON = JSON.stringify(outputArray);
+
+      var outputLink = document.createElement("a");
+      outputLink.href = "data:application/json;charset=utf-8," + encodeURIComponent(outputJSON);
+      outputLink.download = "output.json";
+      outputLink.innerHTML = "Download output.json";
+      
+      document.body.appendChild(outputLink);
+    }
+  </script>
+</head>
+<body>
+  <button onclick="generateOutput()">Generate Output</button>
+</body>
+</html>
